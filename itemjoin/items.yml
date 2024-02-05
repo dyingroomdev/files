@@ -14,32 +14,163 @@ items-RestrictCount: false
 # This is the section that the custom created items will be stored.
 # All created items should be saved under the 'items' section for each 'custom-item' subsection.
 items:
-    starting-item1:
-    id: IRON_SWORD
-    slot: 0
-    starting-item2:
+  devine-item:
     id: GOLDEN_SHOVE
-    slot: 1
-    starting-item3:
-    id: GOLDEN_PICKAXE
+    slot: 0
+    name: '&bBlazefury'
+    lore:
+      - '&7A devine shove.'
+      - '&7This sword is many millennium old...'
+   
+  map-item:
+    id: FILLED_MAP
+    custom-map-image: 'default.jpg'
     slot: 2
-    starting-item4:
-    id: GOLDEN_AXE
-    slot: 3
-    starting-item5:
-    id: GOLDEN_HELMET
+    name: '&eMagical Cloth'
+    lore:
+      - '&7Server promotions'
+      - '&7Directions or custom maps.'
+    itemflags: item-store, unbreakable, hide-flags, death-drops, self-drops, CreativeBypass
+    triggers: join, respawn, world-switch
+    permission-node: itemjoin.map
+    enabled-worlds: ALL
+  gamemode-token:
+    id: FIREWORK_STAR
+    charge-color: RED
     slot: 4
-    starting-item6:
-    id: GOLDEN_CHESTPLATE
-    slot: 5
-    starting-item7:
-    id: GOLDEN_LEGGINGS
+    count: 6
+    name: '&aGamemode Token'
+    lore:
+      - '&7Right-Click use creative token.'
+      - '&7'
+      - '&7Left-Click use spectator token.'
+    interact-right:
+      - 'player: minecraft:gamemode creative %player%'
+      - 'message: &eYou have been set to creative mode.'
+    interact-left:
+      - 'player: minecraft:gamemode spectator %player%'
+      - 'message: &eYou have been set to spectator mode.'
+    commands-sound: BLOCK_NOTE_BLOCK_PLING
+    commands-cooldown: 2
+    itemflags: item-store, death-drops, self-drops, hide-flags, disposable
+    triggers: join, respawn, world-switch
+    permission-node: itemjoin.token
+    enabled-worlds: world, world_nether, world_the_end
+  book-item:
+    id: WRITTEN_BOOK
+    author: '&bRockinChaos'
     slot: 6
-    starting-item8:
-    id: GOLDEN_BOOTS
-    slot: 7
-    starting-item9:
-    id: COOKED_BEEF
+    name: '&c&nCreating a Book'
+    lore:
+      - '&7'
+      - '&7Useful for server rules'
+      - '&7and other server information.'
+    pages:
+      '1':
+        - '&aThanks for checking'
+        - '&aout &bItemJoin &aby'
+        - '<text:&b@RockinChaos#6746><open_url:https://discord.gg/D5FnJ7C><show_text:Click to visit the discord.>'
+        - ''
+        - '&0This is an example of'
+        - '    a &9custom book&0.'
+        - '&0-=-=-=-=-=-=-=-=-=-'
+        - ''
+        - '&0You can set an &cauthor&r'
+        - '&0and you can add text'
+        - '&0components using the'
+        - '&0format <<text:TYPE><show_text:Replace TYPE with the component type. \nExample: run_command, show_text, open_url.>:<text:VALUE><show_text:Replace VALUE with the text, url or command.>>.'
+      '2':
+        - '&cHow do you specify a'
+        - '&cnew page number?'
+        - ''
+        - '&0As displayed to the'
+        - '&0left in the items.yml.'
+        - '&0Create a number to'
+        - '&0specify the new page.'
+        - '&cMakesure you put'
+        - '&ceach number in order.'
+        - ''
+        - '&aNote:&0 that you can'
+        - '&0only have &b14&0 lines '
+        - '&0per page.'
+      '3':
+        - '&0I still &nneed&r help&r!'
+        - ''
+        - '&0RockinChaos is always'
+        - '&0happy to help so feel'
+        - '&0free to reach out'
+        - '&0on <text:&adiscord.><open_url:https://discord.gg/D5FnJ7C><show_text:Click to visit the discord.>'
+        - ''
+        - '&0You can also visit'
+        - '&0the <text:&9wiki page><open_url:https://github.com/RockinChaos/ItemJoin/wiki><show_text:Click to view the wiki.> &rfor'
+        - '&0additional help on'
+        - '&0the plugin including'
+        - '<text:&9custom books.><open_url:https://github.com/RockinChaos/ItemJoin/wiki/Creating-Items#creating-a-custom-book><show_text:Click for additional \nhelp with creating books.>'
+        - ''
+        - 'raw: ["",{"text":"Visit Plugin Page!","color":"gold","clickEvent":{"action":"open_url","value":"https://www.spigotmc.org/resources/itemjoin.12661/"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"Click to visit the spigot page.","color":"green"}]}}}]'
+    itemflags: death-drops, self-drops
+    triggers: join, respawn
+    permission-node: itemjoin.book
+    enabled-worlds: world
+  profile-item:
+    id: PLAYER_HEAD
+    skull-owner: '%player%'
     slot: 8
-    count: 64
-    
+    name: '&b%player%'
+    lore:
+      - '&7Great for setting a players profile,'
+      - '&7as seen in mini-game servers.'
+    itemflags: death-drops, self-drops
+    triggers: join, respawn, world-switch
+    enabled-worlds: world, world_nether, world_the_end
+  animated-panes:
+    id:
+      '1': <delay:40>BLACK_STAINED_GLASS_PANE
+      '2': <delay:20>BLUE_STAINED_GLASS_PANE
+      '3': <delay:20>GREEN_STAINED_GLASS_PANE
+      '4': <delay:20>MAGENTA_STAINED_GLASS_PANE
+      '5': <delay:20>ORANGE_STAINED_GLASS_PANE
+      '6': <delay:20>RED_STAINED_GLASS_PANE
+    slot: ARBITRARY, ARBITRARY, ARBITRARY, ARBITRARY
+    name: '&f'
+    itemflags: animate, inventory-modify, placement, death-drops, self-drops
+    triggers: join, world-switch
+    enabled-worlds: world, world_nether, world_the_end
+  banner-item:
+    id: WHITE_BANNER
+    banner-meta: BLUE:BASE, WHITE:CREEPER
+    slot: 20
+    name: '&9Mighty Creeper'
+    lore:
+      - '&7The creeper is our leader!'
+    interact:
+      - 'message: &bWhere is Herobrine?'
+      - 'message: &cWhere is your leader now...?'
+    commands-sequence: RANDOM
+    itemflags: inventory-modify, hide-flags, self-drops, CreativeBypass
+    triggers: join, respawn, world-switch, region-enter
+    enabled-worlds: world, world_nether, world_the_end
+  animated-sign:
+    id: OAK_SIGN
+    slot: 22
+    name:
+      '1': <delay:20>&f&lStatistics
+      '2': <delay:40>&e&lS&f&lt&e&la&f&lt&e&li&f&ls&e&lt&f&li&e&lc&f&ls
+      '3': <delay:20>&b&lS&f&lt&b&la&f&lt&b&li&f&ls&b&lt&f&li&b&lc&f&ls
+      '4': <delay:40>&a&lS&f&lt&a&la&f&lt&a&li&f&ls&a&lt&f&li&a&lc&f&ls
+      '5': <delay:20>&d&lS&f&lt&d&la&f&lt&d&li&f&ls&d&lt&f&li&d&lc&f&ls
+      '6': <delay:40>&e&lS&f&lt&e&la&f&lt&e&li&f&ls&e&lt&f&li&e&lc&f&ls
+    lore:
+      '1':
+        - '<delay:60>&cMob Kills: %mob_kills%'
+        - '&cPlayer Kills: %player_kills%'
+      '2':
+        - '<delay:60>&cDeaths: %player_deaths%'
+        - '&cYour Location: %player_location%'
+      '3':
+        - '<delay:60>&cHealth: %player_health%'
+        - '&cFood Level: %player_food%'
+    itemflags: animate, inventory-modify, self-drops, death-drops
+    triggers: join, respawn, world-switch
+    enabled-worlds: world, world_nether, world_the_end
+ 
